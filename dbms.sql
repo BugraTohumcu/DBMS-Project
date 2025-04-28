@@ -29,6 +29,11 @@ CREATE table Secondary_Equipment(
     equipment_name varchar2(100),
     release_id NUMBER
 );
+CREATE TABLE Man_Equipment_Relation (
+    mer_id INT PRIMARY KEY,
+    equipment_id INT,
+    FOREIGN KEY (equipment_id) REFERENCES SECONDARY_EQUIPMENT(equipment_id)
+)
 
 CREATE TABLE Infantry (
     infantry_id INT PRIMARY KEY,
@@ -118,7 +123,6 @@ CREATE TABLE ARMY (
     Number_Of_Crew NUMBER(10),
     Created_By_User NUMBER(1),
 
-    -- FOREIGN KEY Tanımlamaları:
     CONSTRAINT fk_army_sar FOREIGN KEY (SAR_id) REFERENCES Squad_Army_Relation(SAR_id),
     CONSTRAINT fk_army_var FOREIGN KEY (var_id) REFERENCES Vehicle_Army_Relation(var_id),
     CONSTRAINT fk_army_country FOREIGN KEY (Country_id) REFERENCES Country(Country_id),
