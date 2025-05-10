@@ -121,7 +121,6 @@ CREATE TABLE ARMY (
     Cost_id NUMBER(10),
     release_id NUMBER(10),
     number_Of_Crew NUMBER(10),
-    Created_By_User NUMBER(10),
 
     CONSTRAINT fk_army_sar FOREIGN KEY (SAR_id) REFERENCES Squad_Army_Relation(SAR_id),
     CONSTRAINT fk_army_var FOREIGN KEY (var_id) REFERENCES Vehicle_Army_Relation(var_id),
