@@ -33,7 +33,7 @@ CREATE TABLE Man_Equipment_Relation (
     mer_id INT PRIMARY KEY,
     equipment_id INT,
     FOREIGN KEY (equipment_id) REFERENCES SECONDARY_EQUIPMENT(equipment_id)
-)
+);
 
 CREATE TABLE Infantry (
     infantry_id INT PRIMARY KEY,
@@ -55,7 +55,7 @@ create table Vehicle(
     vehicle_id int primary key,
     vehicle_name varchar2(100),
     vehicle_type varchar2(100),
-    NUMBER(10)_of_crew NUMBER(10)(10),
+    number_of_crew NUMBER(10),
     release_id int REFERENCES release_date(release_id),
     cost_id int REFERENCES cost(cost_id),
     country_id int REFERENCES country(country_id)
@@ -90,19 +90,19 @@ CREATE TABLE Tank (
 
 create table Vehicle_Army_Relation (
     var_id int not null primary key,
-    vehicle_id int not null
+    vehicle_id int not null,
     CONSTRAINT var_fk REFERENCES vehicle(vehicle_id)
 );
 
 CREATE TABLE Squad (
-    squad_id NUMBER(10) PRIMARY KEY,
+    squad_id int PRIMARY KEY,
     squad_type VARCHAR2(100),
     squad_name VARCHAR2(100),
     release_date NUMBER(10),
-    isr_id NUMBER(10) REFERENCES Inf_Suq_Rel(isr_id),
+    isr_id int REFERENCES Inf_Suq_Rel(isr_id),
     squad_vehicle VARCHAR2(100),
     communication_range NUMBER(10),
-    NUMBER(10)_of_crew NUMBER(10),
+    number_of_crew NUMBER(10),
     power_of_squad NUMBER(10)
 );
 
@@ -120,7 +120,7 @@ CREATE TABLE ARMY (
     Country_id NUMBER(10),
     Cost_id NUMBER(10),
     release_id NUMBER(10),
-    NUMBER(10)_Of_Crew NUMBER(10),
+    number_Of_Crew NUMBER(10),
     Created_By_User NUMBER(10),
 
     CONSTRAINT fk_army_sar FOREIGN KEY (SAR_id) REFERENCES Squad_Army_Relation(SAR_id),
