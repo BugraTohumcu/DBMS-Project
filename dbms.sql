@@ -10,9 +10,9 @@ create table Release_date(
 
 create table Cost(
     cost_id int primary key,
-    cost_of number,
-    maintanance number,
-    operational number
+    cost_of NUMBER,
+    maintanance NUMBER,
+    operational NUMBER
 );
 
 CREATE TABLE Primary_Equipment (
@@ -24,8 +24,8 @@ CREATE TABLE Primary_Equipment (
 );
 
 CREATE table Secondary_Equipment(
-    equipment_id NUMBER(5) primary key,
-    equipment_type Number(5),
+    equipment_id NUMBER primary key,
+    equipment_type NUMBER,
     equipment_name varchar2(100),
     release_id NUMBER
 );
@@ -55,35 +55,35 @@ create table Vehicle(
     vehicle_id int primary key,
     vehicle_name varchar2(100),
     vehicle_type varchar2(100),
-    number_of_crew number,
+    NUMBER_of_crew NUMBER,
     release_id int REFERENCES release_date(release_id),
     cost_id int REFERENCES cost(cost_id),
     country_id int REFERENCES country(country_id)
 );
 
 CREATE TABLE Helicopter (
-    vehicle_id NUMBER(20),
-    Ground_Attack NUMBER(20),
-    helicopter_speed NUMBER(20),
-    Stealth_Coefficent NUMBER(20),
-    CONSTRAINT pk_child PRIMARY KEY (vehicle_id),
-    CONSTRAINT fk_parent FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
+    vehicle_id NUMBER,
+    Ground_Attack NUMBER,
+    helicopter_speed NUMBER,
+    Stealth_Coefficent NUMBER,
+    CONSTRAINT heli_pk PRIMARY KEY (vehicle_id),
+    CONSTRAINT heli_fk FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
 );
 
 create table Ship (
     vehicle_id int not null primary key,
-    ads_power number,
-    balistic_power number not null,
-    ship_speed number,
+    ads_power NUMBER,
+    balistic_power NUMBER not null,
+    ship_speed NUMBER,
     attack_range NUMBER,
     CONSTRAINT ship_fk FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id)
 );
 
 CREATE TABLE Tank (
-    vehicle_id NUMBER(20),
-    Balistic_Power NUMBER(20),
-    Durabilty_Coefficent NUMBER(20),
-    Piercing_Power NUMBER(20),
+    vehicle_id NUMBER,
+    Balistic_Power NUMBER,
+    Durabilty_Coefficent NUMBER,
+    Piercing_Power NUMBER,
     CONSTRAINT pk_tank PRIMARY KEY (vehicle_id),
     CONSTRAINT fk_tank_vehicle FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
 );
@@ -102,7 +102,7 @@ CREATE TABLE Squad (
     isr_id NUMBER REFERENCES Inf_Suq_Rel(isr_id),
     squad_vehicle VARCHAR2(100),
     communication_range NUMBER,
-    number_of_crew NUMBER,
+    NUMBER_of_crew NUMBER,
     power_of_squad NUMBER
 );
 
@@ -112,16 +112,16 @@ CREATE TABLE  Squad_Army_Relation(
 );
 
 CREATE TABLE ARMY (
-    Army_id NUMBER(20) PRIMARY KEY,
+    Army_id NUMBER PRIMARY KEY,
     Army_Name VARCHAR2(100),
-    SAR_id NUMBER(20),
-    var_id NUMBER(20),
+    SAR_id NUMBER,
+    var_id NUMBER,
     Linked_Unit VARCHAR2(100),
     Country_id NUMBER,
-    Cost_id NUMBER(20),
-    release_id NUMBER(20),
-    Number_Of_Crew NUMBER(10),
-    Created_By_User NUMBER(1),
+    Cost_id NUMBER,
+    release_id NUMBER,
+    NUMBER_Of_Crew NUMBER,
+    Created_By_User NUMBER,
 
     CONSTRAINT fk_army_sar FOREIGN KEY (SAR_id) REFERENCES Squad_Army_Relation(SAR_id),
     CONSTRAINT fk_army_var FOREIGN KEY (var_id) REFERENCES Vehicle_Army_Relation(var_id),
