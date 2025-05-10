@@ -127,4 +127,6 @@ CREATE TABLE ARMY (
     CONSTRAINT fk_army_var FOREIGN KEY (var_id) REFERENCES Vehicle_Army_Relation(var_id),
     CONSTRAINT fk_army_country FOREIGN KEY (Country_id) REFERENCES Country(Country_id),
     CONSTRAINT fk_army_cost FOREIGN KEY (Cost_id) REFERENCES Cost(Cost_id)
+    CONSTRAINT fk_army_date FOREIGN KEY (release_id) REFERENCES Release_date(release_id)
+
 );
