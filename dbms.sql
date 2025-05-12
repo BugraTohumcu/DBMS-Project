@@ -118,7 +118,6 @@ CREATE TABLE Army (
     cost_id NUMBER(10),
     release_date NUMBER(10),
     number_of_crew NUMBER(10),
-    created_by_user NUMBER(10),
     FOREIGN KEY (country_id) REFERENCES Country(country_id),
     FOREIGN KEY (cost_id) REFERENCES Cost(cost_id)
 );
