@@ -54,7 +54,13 @@ CREATE TABLE Vehicle(
     cost_id INT REFERENCES Cost(cost_id),
     country_id INT REFERENCES Country(country_id)
 );
-
+CREATE TABLE Plane(
+    vehicle_id NUMBER(10),
+    Ground_Attack NUMBER(10),
+    Air_Attack NUMBER(10),
+    CONSTRAINT plane_pk PRIMARY KEY (vehicle_id),
+    CONSTRAINT plane_fk FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
+);
 CREATE TABLE Helicopter (
     vehicle_id NUMBER(10),
     Ground_Attack NUMBER(10),
