@@ -20,7 +20,7 @@ CREATE TABLE Primary_Equipment (
 
 CREATE TABLE Secondary_Equipment (
     equipment_id NUMBER(10) PRIMARY KEY,
-    equipment_type NUMBER(10),
+    equipment_type VARCHAR2(100),
     equipment_name VARCHAR2(100),
     release_date NUMBER(10)
 );
