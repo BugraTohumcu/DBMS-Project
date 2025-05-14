@@ -72,7 +72,7 @@ CREATE TABLE Vehicle (
     release_date NUMBER(10),
     cost_id INT,
     country_id INT,
-    speed number,
+    speed number(10),
     FOREIGN KEY (cost_id) REFERENCES Cost(cost_id),
     FOREIGN KEY (country_id) REFERENCES Country(country_id)
 );
