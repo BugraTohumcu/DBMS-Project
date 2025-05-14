@@ -22,7 +22,7 @@ CREATE TABLE Secondary_Equipment (
     equipment_id NUMBER(10) PRIMARY KEY,
     equipment_type NUMBER(10),
     equipment_name VARCHAR2(100),
-    release_id NUMBER(10)
+    release_date NUMBER(10)
 );
 
 
@@ -72,6 +72,7 @@ CREATE TABLE Vehicle (
     release_date NUMBER(10),
     cost_id INT,
     country_id INT,
+    speed number,
     FOREIGN KEY (cost_id) REFERENCES Cost(cost_id),
     FOREIGN KEY (country_id) REFERENCES Country(country_id)
 );
@@ -87,7 +88,6 @@ CREATE TABLE Plane (
 CREATE TABLE Helicopter (
     vehicle_id NUMBER(10) PRIMARY KEY,
     Ground_Attack NUMBER(10),
-    helicopter_speed NUMBER(10),
     Stealth_Coefficient NUMBER(10),
     FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
 );
@@ -96,7 +96,6 @@ CREATE TABLE Ship (
     vehicle_id INT PRIMARY KEY,
     ads_power NUMBER(10),
     ballistic_power NUMBER(10) NOT NULL,
-    ship_speed NUMBER(10),
     attack_range NUMBER(10),
     FOREIGN KEY (vehicle_id) REFERENCES Vehicle(vehicle_id)
 );
